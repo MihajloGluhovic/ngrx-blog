@@ -3,7 +3,7 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {PopularTagService} from '../services/popularTag.service';
 import {popularTagsActions} from './actions';
 import {catchError, map, of, switchMap} from 'rxjs';
-import {PopularTagType} from '../../feed/types/popularTag.type';
+import {PopularTagType} from '../../../types/popularTag.type';
 
 export const getPopularTagsEffects = createEffect(
   (

@@ -1,0 +1,47 @@
+<ng-container *ngIf="data$ | async as data">
+  <div class="article-page">
+    <div class="banner">
+      <div class="container" *ngIf="data.article">
+        <h1>{{ data.article.title }}</h1>
+        <div class="article-meta">
+          <a [routerLink]="['/profiles', data.article.author.username]">
+            <img [src]="data.article.author.image" />
+          </a>
+          <div class="info">
+            <a [routerLink]="['/profiles', data.article.author.username]">
+              {{ data.article.author.username }}
+            </a>
+            <span class="data">{{ data.article.createdAt }} </span>
+          </div>
+          <span *ngIf="data.isAuthor">
+            <a
+              [routerLink]="['/articles', data.article.slug, 'edit']"
+              class="btn btn-outline-secondary btn-sm"
+            >
+              <i class="ion-edit"></i>Edit Article
+            </a>
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="deleteArticle()"
+            >
+              Delete Article
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="container page">
+      <mc-loading *ngIf="data.isLoading"></mc-loading>
+      <mc-error-message *ngIf="data.error"></mc-error-message>
+
+      <div class="row article-contenr" *ngIf="data.article">
+        <div class="col-xs-12">
+          <div>
+            <p>{{ data.article.body }}</p>
+          </div>
+          <mc-tag-list [tags]="data.article.tagList"></mc-tag-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

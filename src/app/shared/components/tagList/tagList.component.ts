@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PopularTagType} from '../feed/types/popularTag.type';
+import {PopularTagType} from '../../types/popularTag.type';
 import {CommonModule} from '@angular/common';
 
 @Component({

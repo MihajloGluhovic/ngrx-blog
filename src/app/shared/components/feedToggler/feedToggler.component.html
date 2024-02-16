@@ -6,7 +6,12 @@
       >
     </li>
     <li class="nav-item">
-      <a routerLink="/" class="nav-link" routerLinkActive="active"
+      <a
+        routerLink="/"
+        class="nav-link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        queryParamsHandling="merge"
         >Global Feed</a
       >
     </li>
