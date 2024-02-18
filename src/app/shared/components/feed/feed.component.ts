@@ -17,7 +17,7 @@ import {environment} from 'src/environments/environment.development';
 import {PaginationComponent} from '../pagination/pagination.component';
 import queryString from 'query-string';
 import {TagListComponent} from '../tagList/tagList.component';
-import { AddToFavoritesComponent } from '../addToFavorites/addToFavorites.component';
+import {AddToFavoritesComponent} from '../addToFavorites/addToFavorites.component';
 
 @Component({
   selector: 'mc-feed',
@@ -30,7 +30,7 @@ import { AddToFavoritesComponent } from '../addToFavorites/addToFavorites.compon
     LoadingComponent,
     PaginationComponent,
     TagListComponent,
-    AddToFavoritesComponent
+    AddToFavoritesComponent,
   ],
 })
 export class FeedComponent implements OnInit, OnChanges {
@@ -53,7 +53,6 @@ export class FeedComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
-      console.log('params', params);
       this.currentPage = Number(params['page'] || '1');
       this.fetchFeed();
     });
