@@ -42,7 +42,7 @@ export class AuthService {
   ): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/user';
     return this.http
-      .post<AuthResponseInterface>(url, currentUserRequest)
+      .put<AuthResponseInterface>(url, currentUserRequest)
       .pipe(map(this.getUser));
   }
 }
