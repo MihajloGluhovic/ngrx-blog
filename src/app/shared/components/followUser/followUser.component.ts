@@ -3,6 +3,8 @@ import {Component, Input} from '@angular/core';
 import {AddToFavoritesService} from '../addToFavorites/services/addToFavorites.service';
 import {Store} from '@ngrx/store';
 import {followUserActions} from './store/actions';
+import {combineLatest} from 'rxjs';
+import {selectIsSubmitting, selectUser} from './store/reducers';
 
 @Component({
   selector: 'mc-follow-user',
@@ -14,6 +16,11 @@ import {followUserActions} from './store/actions';
 export class FollowUserComponent {
   @Input() isFollowed: boolean = false;
   @Input() userSlug: string = '';
+
+  data$ = combineLatest({
+    isSubmitting: this.store.select(selectIsSubmitting),
+    user: this.store.select(selectUser),
+  });
 
   constructor(private store: Store) {}
 
@@ -27,6 +34,6 @@ export class FollowUserComponent {
 
     this.isFollowed = !this.isFollowed;
 
-    console.log('followed?');
+    console.log(this.isFollowed);
   }
 }

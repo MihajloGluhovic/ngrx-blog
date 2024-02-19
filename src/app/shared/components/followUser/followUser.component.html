@@ -1,3 +1,14 @@
-<button (click)="handleFollow()">
-  <i class="ion-plus"></i><span> Follow User</span>
-</button>
+<ng-container *ngIf="data$ | async as data">
+  <button
+    (click)="handleFollow()"
+    class="btn btn-sm action-btn ng-binding btn-outline-secondary"
+    [ngClass]="{
+      disabled: data.isSubmitting,
+      'btn-outline-secondary': data.user?.following,
+      'btn-secondary': data.user?.following
+    }"
+  >
+    <i class="ion-plus-round"></i> &nbsp;
+    {{ data.user?.following ? 'Unfollow' : 'Follow' }} {{ userSlug }}
+  </button>
+</ng-container>

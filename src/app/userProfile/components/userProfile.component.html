@@ -8,7 +8,11 @@
             <h4>{{ data.userProfile.username }}</h4>
             <p>{{ data.userProfile.bio }}</p>
             <div>
-              <mc-follow-user [userSlug]="slug"></mc-follow-user>
+              <mc-follow-user
+                *ngIf="!data.isCurrentUserProfile$"
+                [userSlug]="slug"
+                [isFollowed]="data.userProfile.following"
+              ></mc-follow-user>
               <a
                 *ngIf="data.isCurrentUserProfile$"
                 class="btn btn-sm btn-outline-secondary action-btn"

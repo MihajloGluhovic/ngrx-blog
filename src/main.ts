@@ -25,6 +25,10 @@ import {
 } from './app/shared/components/popularTags/store/reducers';
 import {AddToFavoritesService} from './app/shared/components/addToFavorites/services/addToFavorites.service';
 import {FollowUserService} from './app/shared/components/followUser/services/followUser.service';
+import {
+  followUserFeatureKey,
+  followUserReducer,
+} from './app/shared/components/followUser/store/reducers';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -35,6 +39,7 @@ bootstrapApplication(AppComponent, {
     }),
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
+    provideState(followUserFeatureKey, followUserReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
     provideEffects(
       authEffects,

@@ -14,8 +14,8 @@ export const getUserProfile = createEffect(
       ofType(followUserActions.followUser),
       switchMap(({isFollowed, slug}) => {
         const user$ = isFollowed
-          ? followUserService.followUser(slug)
-          : followUserService.unfollowUser(slug);
+          ? followUserService.unfollowUser(slug)
+          : followUserService.followUser(slug);
         return user$.pipe(
           map((userProfile: UserProfileInterface) => {
             return followUserActions.followUserSuccess({userProfile});
