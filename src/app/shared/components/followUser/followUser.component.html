@@ -4,11 +4,12 @@
     class="btn btn-sm action-btn ng-binding btn-outline-secondary"
     [ngClass]="{
       disabled: data.isSubmitting,
-      'btn-outline-secondary': data.user?.following,
-      'btn-secondary': data.user?.following
+      'btn-outline-secondary': isFollowed,
+      'btn-secondary': isFollowed
     }"
   >
     <i class="ion-plus-round"></i> &nbsp;
-    {{ data.user?.following ? 'Unfollow' : 'Follow' }} {{ userSlug }}
+    {{ isFollowed ? 'Unfollow' : 'Follow' }}
+    {{ userSlug }}
   </button>
 </ng-container>

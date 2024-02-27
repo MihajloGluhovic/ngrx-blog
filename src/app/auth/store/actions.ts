@@ -28,19 +28,4 @@ export const authActions = createActionGroup({
 
     Logout: emptyProps(),
   },
-});
-
-// export const register = createAction(
-//   '[Auth] Register',
-//   props<{ request: RegisterRequestInterface }>()
-// );
-
-// export const registerSuccess = createAction(
-//   '[Auth] Register Success',
-//   props<{ request: RegisterRequestInterface }>()
-// );
-
-// export const registerFailure = createAction(
-//   '[Auth] Register Failure',
-//   props<{ request: RegisterRequestInterface }>()
-// );
+})
