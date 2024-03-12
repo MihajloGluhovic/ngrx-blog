@@ -57,8 +57,10 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {AddToFavoritesService} from '../addToFavorites/services/addToFavorites.service';
 import {Store} from '@ngrx/store';
 import {followUserActions} from './store/actions';
-import {combineLatest, map} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {selectIsSubmitting, selectUser} from './store/reducers';
+import {Router} from '@angular/router';
+import {CurrentUserInterface} from '../../types/currentUser.interface';
 
 @Component({
   selector: 'mc-follow-user',
@@ -70,22 +72,27 @@ import {selectIsSubmitting, selectUser} from './store/reducers';
 export class FollowUserComponent {
   @Input() isFollowed: boolean = false;
   @Input() userSlug: string = '';
+  @Input() currentUser: any;
 
   data$ = combineLatest({
     isSubmitting: this.store.select(selectIsSubmitting),
     user: this.store.select(selectUser),
   });
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   handleFollow(): void {
-    this.store.dispatch(
-      followUserActions.followUser({
-        isFollowed: this.isFollowed,
-        slug: this.userSlug,
-      })
-    );
+    if (this.currentUser) {
+      this.store.dispatch(
+        followUserActions.followUser({
+          isFollowed: this.isFollowed,
+          slug: this.userSlug,
+        })
+      );
 
-    this.isFollowed = !this.isFollowed;
+      this.isFollowed = !this.isFollowed;
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

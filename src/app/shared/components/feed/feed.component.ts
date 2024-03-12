@@ -18,6 +18,7 @@ import {PaginationComponent} from '../pagination/pagination.component';
 import queryString from 'query-string';
 import {TagListComponent} from '../tagList/tagList.component';
 import {AddToFavoritesComponent} from '../addToFavorites/addToFavorites.component';
+import {selectCurrentUser} from 'src/app/auth/store/reducers';
 
 @Component({
   selector: 'mc-feed',
@@ -40,6 +41,7 @@ export class FeedComponent implements OnInit, OnChanges {
     isLoading: this.store.select(selectIsLoading),
     error: this.store.select(selectError),
     feed: this.store.select(selectFeedData),
+    currentUser: this.store.select(selectCurrentUser),
   });
   limit = environment.limit;
   baseUrl = this.router.url.split('?')[0];

@@ -50,6 +50,10 @@
                   placeholder="New password"
                 />
               </fieldset>
+              <hr />
+              <button class="btn btn-lg btn-outline-danger" (click)="logout()">
+                Or click here to logout
+              </button>
               <button
                 type="submit"
                 class="btn btn-lg btn-primary pull-xs-right"
@@ -57,12 +61,9 @@
               >
                 Update settings
               </button>
+              <hr />
             </fieldset>
           </form>
-          <hr />
-          <button class="btn btn-outline-danger" (click)="logout()">
-            Or click here to logout
-          </button>
         </div>
       </div>
     </div>

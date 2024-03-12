@@ -64,6 +64,7 @@ export class UserProfileComponent implements OnInit {
     error: this.store.select(selectError),
     userProfile: this.store.select(selectUserProfileData),
     isCurrentUserProfile$: this.isCurrentUserProfile$,
+    currentUser: this.store.select(selectCurrentUser),
   });
 
   constructor(
